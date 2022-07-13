@@ -29,4 +29,6 @@ def getAngle(frame):
     """
     frame = ut.unwrap(frame)
     x, y = getMiddle(frame)
-    return y
+    if y >= 180:
+        return  360 - y
+    return y - 360
