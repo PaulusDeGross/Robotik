@@ -1,5 +1,14 @@
 import Utility as ut
-import ColorFinder as cf
+import Ball
 
 img = ut.load_test_image("img/375.png")
-#img = ut.drawMiddleCross(img=img, c_diameter=420, robot_mask=False)
+
+ut.drawRobotMiddleCross(img=img, c_diameter=420, robot_mask=False)
+
+img = ut.unwrap(img)
+#x, y = Ball.getMiddle(img)
+#print(f"Middle of Ball: x={x} | y={y}")
+
+
+#ut.drawCross(img, x, y, 30, line_strength=2)
+ut.show_test_image(img)

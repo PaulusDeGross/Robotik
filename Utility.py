@@ -18,12 +18,20 @@ def unwrap(img):
     img = cv2.warpPolar(img, (val.MIRROR_RADIUS, 360), val.CENTER_IMAGE, val.MIRROR_RADIUS,
                         cv2.WARP_POLAR_LINEAR + cv2.WARP_FILL_OUTLIERS)[:,  # Abwickeln des Bildes
           val.ROBOT_RADIUS:val.MIRROR_RADIUS]  # Zuschneiden des Bildes
-    print(f"Width: {img.shape[1]} | Height: {img.shape[0]}")
-    print()
     return img
 
 
-def drawMiddleCross(
+def drawCross(img, x_middle, y_middle, size=50, color=(0, 0, 0), line_strength=1):
+    x_pt1 = [int(x_middle - size / 2), int(y_middle)]
+    x_pt2 = [int(x_middle + size / 2), int(y_middle)]
+    y_pt1 = [int(x_middle), int(y_middle - size / 2)]
+    y_pt2 = [int(x_middle), int(y_middle + size / 2)]
+    cv2.line(img, x_pt1, x_pt2, color, line_strength)
+    cv2.line(img, y_pt1, y_pt2, color, line_strength)
+    return img
+
+
+def drawRobotMiddleCross(
         img,
         c_diameter,
         robot_offset=val.CENTER_IMAGE,

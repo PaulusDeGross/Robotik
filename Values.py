@@ -3,5 +3,5 @@ ROBOT_RADIUS = 110
 MIRROR_RADIUS = 203
 CENTER_IMAGE = (314, 250)
 
-# [(h_min, s_min, v_min), (h_max, s_max, v_max)]
-BALL_COLOR = [(0, 135, 149), (17, 255, 255)]
+# [(b_min, g_min, r_min), (b_max, g_max, r_max)]
+BALL_COLOR = [[0, 0, 147], [255, 108, 255]]
