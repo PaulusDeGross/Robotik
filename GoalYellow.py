@@ -7,7 +7,7 @@ import Values as val
 
 def getMiddle(frame):
     """
-    Gets the middle of the Ball using a mask
+    Gets the middle of the Yellow Goal using a mask
 
     :param frame:
     :return: middle of the ball in x, y coords
@@ -22,10 +22,10 @@ def getMiddle(frame):
 
 def getAngle(frame):
     """
-    Gets the Angle of the Ball using the unwrapped image
+    Gets the Angle of the Yellow Goal using the unwrapped image
 
-    :param frame: unwrapped frame
-    :return: the angle of the ball relative to the front of the robot
+    :param Any frame: unwrapped frame
+    :return: the angle of the goal relative to the front of the robot
     """
     frame = ut.unwrap(frame)
     x, y = getMiddle(frame)

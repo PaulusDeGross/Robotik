@@ -40,6 +40,7 @@ def drawCross(img, x_middle, y_middle, size=50, color=(0, 0, 0), line_strength=1
     :return: image with marker
     """
 
+
     x_pt1 = [int(x_middle - size / 2), int(y_middle)]
     x_pt2 = [int(x_middle + size / 2), int(y_middle)]
     y_pt1 = [int(x_middle), int(y_middle - size / 2)]
@@ -80,15 +81,4 @@ def drawRobotMiddleCross(
     cv2.line(img, y_pt1, y_pt2, (0, 0, 255), 1)
     cv2.line(img, x_pt1, x_pt2, (0, 0, 255), 1)
 
-    return img
-
-
-def drawVector(img, distance, angle):
-    x = val.CENTER_IMAGE[0]
-    y = val.CENTER_IMAGE[1]
-
-    startpoint = (x, y)
-    endpoint = (int(distance * math.sin(angle)), int(distance * math.cos(angle)))
-
-    cv2.arrowedLine(img, startpoint, endpoint, (0, 0, 0), 2)
     return img
