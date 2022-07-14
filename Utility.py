@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-from _thread import start_new_thread
 import Values as val
 import math
 
@@ -85,8 +84,8 @@ def drawRobotMiddleCross(
 
 
 def drawVector(img, distance, angle):
-    x = int(img.shape[0] / 2)
-    y = int(img.shape[1] / 2)
+    x = val.CENTER_IMAGE[0]
+    y = val.CENTER_IMAGE[1]
 
     startpoint = (x, y)
     endpoint = (int(distance * math.sin(angle)), int(distance * math.cos(angle)))
