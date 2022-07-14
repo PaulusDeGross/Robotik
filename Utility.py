@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 from _thread import start_new_thread
 import Values as val
+import math
 
 
 def load_test_image(path):
@@ -80,4 +81,15 @@ def drawRobotMiddleCross(
     cv2.line(img, y_pt1, y_pt2, (0, 0, 255), 1)
     cv2.line(img, x_pt1, x_pt2, (0, 0, 255), 1)
 
+    return img
+
+
+def drawVector(img, distance, angle):
+    x = int(img.shape[0] / 2)
+    y = int(img.shape[1] / 2)
+
+    startpoint = (x, y)
+    endpoint = (int(distance * math.sin(angle)), int(distance * math.cos(angle)))
+
+    cv2.arrowedLine(img, startpoint, endpoint, (0, 0, 0), 2)
     return img

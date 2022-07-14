@@ -17,7 +17,7 @@ cv2.createTrackbar("Red max", "Trackbars", 255, 255, empty)
 
 while True:
 
-    img = cv2.imread("img/264.png")
+    img = cv2.imread("img/375.png")
 
     b_min = cv2.getTrackbarPos("Blue min", "Trackbars")
     b_max = cv2.getTrackbarPos("Blue max", "Trackbars")
