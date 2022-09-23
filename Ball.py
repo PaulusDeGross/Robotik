@@ -17,7 +17,7 @@ def getMiddle(frame):
 
     mask = cv2.inRange(frame, lower, upper)
     x, y, w, h = cv2.boundingRect(mask)
-    return [math.floor(x + w / 2), math.floor(y + h / 2)]
+    return [math.floor(x + w / 2), math.floor(y + h / 2), w, h]
 
 
 def getAngle(frame):
@@ -28,10 +28,18 @@ def getAngle(frame):
     :return: the angle of the ball relative to the front of the robot
     """
     frame = ut.unwrap(frame)
-    x, y = getMiddle(frame)
-    if y >= 180:
-        return 360 - y
-    return -y
+    x, y, w, h = getMiddle(frame)
+    if h < 360:
+        if y >= 180:
+            return 360 - y
+        return -y
+    else:
+        frame = ut.scrollImage(frame)
+        x, y, w, h = getMiddle(frame)
+        if y >= 180:
+            return 360 - y
+        return 180 - y
+    raise "Image wasn't unwrapped correctly"
 
 
 def getDistance(frame):

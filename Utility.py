@@ -40,13 +40,23 @@ def drawCross(img, x_middle, y_middle, size=50, color=(0, 0, 0), line_strength=1
     :return: image with marker
     """
 
-
     x_pt1 = [int(x_middle - size / 2), int(y_middle)]
     x_pt2 = [int(x_middle + size / 2), int(y_middle)]
     y_pt1 = [int(x_middle), int(y_middle - size / 2)]
     y_pt2 = [int(x_middle), int(y_middle + size / 2)]
     cv2.line(img, x_pt1, x_pt2, color, line_strength)
     cv2.line(img, y_pt1, y_pt2, color, line_strength)
+    return img
+
+
+def scrollImage(img):
+    img_width = img.shape[1]
+    img_height = img.shape[0]
+    if img_width == 93 and img_height == 360:
+        img_top = img[0:180]
+        img_bottom = img[180:360]
+        img = np.vstack((img_bottom, img_top))
+
     return img
 
 

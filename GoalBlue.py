@@ -4,7 +4,6 @@ import math
 import Utility as ut
 import Values as val
 
-
 def getMiddle(frame):
     """
     Gets the middle of the Ball using a mask
@@ -17,21 +16,30 @@ def getMiddle(frame):
 
     mask = cv2.inRange(frame, lower, upper)
     x, y, w, h = cv2.boundingRect(mask)
-    return [math.floor(x + w / 2), math.floor(y + h / 2)]
+    return [math.floor(x + w / 2), math.floor(y + h / 2), w, h]
+
 
 
 def getAngle(frame):
     """
-    Gets the Angle of the Ball using the unwrapped image
+    Gets the Angle of the Blue Goal using the unwrapped image
 
     :param frame: unwrapped frame
     :return: the angle of the ball relative to the front of the robot
     """
     frame = ut.unwrap(frame)
-    x, y = getMiddle(frame)
-    if y >= 180:
-        return 360 - y
-    return y
+    x, y, w, h = getMiddle(frame)
+    if h < 360:
+        if y >= 180:
+            return 360 - y
+        return y
+    else:
+        frame = ut.scrollImage(frame)
+        x, y, w, h = getMiddle(frame)
+        if y >= 180:
+            return 360 - y
+        return 180-y
+    raise "Image wasn't unwrapped correctly"
 
 
 def getDistance(frame):
