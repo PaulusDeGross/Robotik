@@ -32,14 +32,13 @@ def getAngle(frame):
     if h < 360:
         if y >= 180:
             return 360 - y
-        return y
+        return -y
     else:
         frame = ut.scrollImage(frame)
         x, y, w, h = getMiddle(frame)
         if y >= 180:
             return 360 - y
-        return 180-y
-    raise "Image wasn't unwrapped correctly"
+        return 180 - y
 
 
 def getDistance(frame):

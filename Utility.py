@@ -27,7 +27,7 @@ def unwrap(img):
     return img
 
 
-def drawCross(img, x_middle, y_middle, size=50, color=(0, 0, 0), line_strength=1):
+def drawCross(img, x_middle, y_middle, size=50, color=(0, 0, 0), line_strength=1, angle=0):
     """
     Returns an image with a marker at an x, y value.
 
@@ -46,6 +46,7 @@ def drawCross(img, x_middle, y_middle, size=50, color=(0, 0, 0), line_strength=1
     y_pt2 = [int(x_middle), int(y_middle + size / 2)]
     cv2.line(img, x_pt1, x_pt2, color, line_strength)
     cv2.line(img, y_pt1, y_pt2, color, line_strength)
+    cv2.putText(img, f'{angle}deg', (int(x_middle - (size / 2)), y_middle - 20), cv2.FONT_HERSHEY_SIMPLEX, 1, color)
     return img
 
 

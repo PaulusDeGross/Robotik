@@ -3,8 +3,8 @@ import numpy as np
 import Utility as ut
 import Values as val
 
-VALS = val.GOAL_Y_COLOR
-PATH = "img/109.png"
+VALS = val.GOAL_B_COLOR
+PATH = "img/264.png"
 
 def empty(i):
     pass
@@ -54,9 +54,19 @@ while True:
 
     print(f"Middle: x = {x + w / 2} | y = {y + h / 2}")
 
+    ut.drawCross(rect2, x_middle=int(val.CENTER_IMAGE[0]), y_middle=int(val.CENTER_IMAGE[1]), color=(0, 255, 0), line_strength=2)
+    ut.drawCross(mask, x_middle=int(val.CENTER_IMAGE[0]), y_middle=int(val.CENTER_IMAGE[1]), color=(0, 255, 0), line_strength=2)
+    ut.drawCross(rect, x_middle=int(val.CENTER_IMAGE[0]), y_middle=int(val.CENTER_IMAGE[1]), color=(0, 255, 0), line_strength=2)
+    ut.drawCross(rect2, x_middle=int(x_m), y_middle=int(y_m), color=(0, 0, 255), line_strength=2)
+    ut.drawCross(mask, x_middle=int(x_m), y_middle=int(y_m), color=(0, 0, 255), line_strength=2)
+    ut.drawCross(rect, x_middle=int(x_m), y_middle=int(y_m), color=(0, 0, 255), line_strength=2)
+
+
     cv2.imshow("BGR", rect2)
     cv2.imshow("MASK", mask)
     cv2.imshow("RES", rect)
+
+
 
     if cv2.waitKey(1) & 0xFF == ord("q"):
         break
