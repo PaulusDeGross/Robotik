@@ -19,7 +19,6 @@ def getMiddle(frame):
     return [math.floor(x + w / 2), math.floor(y + h / 2), w, h]
 
 
-
 def getAngle(frame):
     """
     Gets the Angle of the Blue Goal using the unwrapped image

@@ -51,6 +51,13 @@ def drawCross(img, x_middle, y_middle, size=50, color=(0, 0, 0), line_strength=1
 
 
 def scrollImage(img):
+    """
+    Scrolls the image 180px to the top
+
+    :param Any img: Image to scroll
+    :return:
+    """
+
     img_width = img.shape[1]
     img_height = img.shape[0]
     if img_width == 93 and img_height == 360:
@@ -91,5 +98,31 @@ def drawRobotMiddleCross(
 
     cv2.line(img, y_pt1, y_pt2, (0, 0, 255), 1)
     cv2.line(img, x_pt1, x_pt2, (0, 0, 255), 1)
+
+    return img
+
+
+def drawTriangle(img, middle1, middle2=val.CENTER_IMAGE, color=(255, 255, 255), line_strength=2):
+    """
+
+    :param img:
+    :param middle1:
+    :param middle2:
+    :param color:
+    :param line_strength:
+    :return:
+    """
+
+
+    pt_c1 = [int(middle1[0]), int(middle1[1])]
+    pt_c2 = [int(middle2[0]), int(middle2[1])]
+    pt_a1 = [int(middle1[0]), int(middle1[1])]
+    pt_a2 = [int(middle1[0]), int(middle2[1])]
+    pt_b1 = [int(middle1[0]), int(middle2[1])]
+    pt_b2 = [int(middle2[0]), int(middle2[1])]
+
+    cv2.line(img, pt_c1, pt_c2, color, line_strength)
+    cv2.line(img, pt_a1, pt_a2, color, line_strength)
+    cv2.line(img, pt_b1, pt_b2, color, line_strength)
 
     return img
