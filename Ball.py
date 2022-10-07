@@ -22,24 +22,31 @@ def getMiddle(frame):
 
 def getAngle(frame):
     """
-    Gets the Angle of the Ball using the unwrapped image
+    Gets the Angle of the yellow goal using a tangent using tan^-1(m)
 
-    :param frame: unwrapped frame
-    :return: the angle of the ball relative to the front of the robot
+    :param frame:
+    :return:
     """
-    frame = ut.unwrap(frame)
     x, y, w, h = getMiddle(frame)
-    if h < 360:
-        if y >= 180:
-            return 360 - y
-        return -y
-    else:
-        frame = ut.scrollImage(frame)
-        x, y, w, h = getMiddle(frame)
-        if y >= 180:
-            return 360 - y
-        return 180 - y
-    raise "Image wasn't unwrapped correctly"
+    x = x - val.CENTER_IMAGE[0]
+    y = val.CENTER_IMAGE[1] - y
+    print(f"Ball: {x}, {y}")
+
+    # QUADRANT I
+    if x > 0 and y > 0:
+        return math.degrees(np.arctan(y / x))
+
+    # QUADRANT II
+    elif x < 0 and y > 0:
+        return math.degrees(np.arctan(y / x) + math.pi)
+
+    # QUADRANT III
+    elif x < 0 and y < 0:
+        return math.degrees(np.arctan(y / x) + math.pi) - 360
+
+    # QUADRANT IV
+    elif x > 0 and y < 0:
+        return math.degrees(np.arctan(y / x) + math.pi * 2) - 360
 
 
 def getDistance(frame):

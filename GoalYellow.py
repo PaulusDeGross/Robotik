@@ -19,7 +19,7 @@ def getMiddle(frame):
     return [math.floor(x + w / 2), math.floor(y + h / 2), w, h]
 
 
-def getAngleTan(frame):
+def getAngle(frame):
     """
     Gets the Angle of the yellow goal using a tangent using tan^-1(m)
 
@@ -29,37 +29,23 @@ def getAngleTan(frame):
     x, y, w, h = getMiddle(frame)
     x = x - val.CENTER_IMAGE[0]
     y = val.CENTER_IMAGE[1] - y
-    print(f"{x}, {y}")
+    print(f"Blue: {x}, {y}")
 
-    if x > 0 and y < 0:
-        return math.degrees(np.arctan(y / x) + math.pi * 2)
-    elif x < 0 and y < 0:
-        return math.degrees(np.arctan(y / x) + math.pi * 3)
-    elif x > 0 and y > 0:
+    # QUADRANT I
+    if x > 0 and y > 0:
         return math.degrees(np.arctan(y / x))
+
+    # QUADRANT II
     elif x < 0 and y > 0:
         return math.degrees(np.arctan(y / x) + math.pi)
 
+    # QUADRANT III
+    elif x < 0 and y < 0:
+        return math.degrees(np.arctan(y / x) + math.pi) - 360
 
-def getAngle(frame):
-    """
-    Gets the Angle of the Yellow Goal using the unwrapped image
-
-    :param Any frame: unwrapped frame
-    :return: the angle of the goal relative to the front of the robot
-    """
-    frame = ut.unwrap(frame)
-    x, y, w, h = getMiddle(frame)
-    if h < 360:
-        if y >= 180:
-            return 360 - y
-        return -y
-    else:
-        frame = ut.scrollImage(frame)
-        x, y, w, h = getMiddle(frame)
-        if y >= 180:
-            return 360 - y
-        return 180 - y
+    # QUADRANT IV
+    elif x > 0 and y < 0:
+        return math.degrees(np.arctan(y / x) + math.pi * 2) - 360
 
 
 def getDistance(frame):

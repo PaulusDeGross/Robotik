@@ -59,7 +59,8 @@ def drawCross(img, x_middle, y_middle, size=50, color=(0, 0, 0), line_strength=1
     y_pt2 = [int(x_middle), int(y_middle + size / 2)]
     cv2.line(img, x_pt1, x_pt2, color, line_strength)
     cv2.line(img, y_pt1, y_pt2, color, line_strength)
-    cv2.putText(img, f'{angle}deg', (int(x_middle - (size / 2)), y_middle - 20), cv2.FONT_HERSHEY_SIMPLEX, 1, color)
+    if angle != None:
+        cv2.putText(img, f'{math.floor(angle)}deg', (int(x_middle - (size / 2)), y_middle - 20), cv2.FONT_HERSHEY_SIMPLEX, 1, color)
     return img
 
 
@@ -143,8 +144,6 @@ def drawTriangle(img, middle1, middle2=val.CENTER_IMAGE, color=(255, 255, 255), 
     :param line_strength:
     :return:
     """
-
-
     pt_c1 = [int(middle1[0]), int(middle1[1])]
     pt_c2 = [int(middle2[0]), int(middle2[1])]
     pt_a1 = [int(middle1[0]), int(middle1[1])]
