@@ -4,19 +4,19 @@ import Ball
 import GoalYellow
 import GoalBlue
 
-img = ut.load_test_image("img/375.png")
+img = ut.load_test_image("img/109.png")
 
 ball_angle = Ball.getAngle(img)
 ball_middle = Ball.getMiddle(img)
 ball_x = ball_middle[0]
 ball_y = ball_middle[1]
 
-gy_angle = GoalYellow.getAngle(img)
+gy_angle = GoalYellow.getAngleTan(img)
 gy_middle = GoalYellow.getMiddle(img)
 gy_x = gy_middle[0]
 gy_y = gy_middle[1]
 
-gb_angle = GoalBlue.getAngle(img)
+gb_angle = GoalBlue.getAngleTan(img)
 gb_middle = GoalBlue.getMiddle(img)
 gb_x = gb_middle[0]
 gb_y = gb_middle[1]

@@ -5,11 +5,24 @@ import math
 
 
 def load_test_image(path):
+    """
+    Reads the image using opencv and returns it
+
+    :param str path: Path to the image
+    :return: image read by opencv
+    """
     img = cv2.imread(path)
     return img
 
 
 def show_test_image(img, title=""):
+    """
+    Displays a given image in using opencv
+
+    :param img: image to be displayed
+    :param str title: name of the window
+    :return:
+    """
     cv2.imshow(title, img)
     cv2.waitKey(0)
 
@@ -99,6 +112,24 @@ def drawRobotMiddleCross(
     cv2.line(img, y_pt1, y_pt2, (0, 0, 255), 1)
     cv2.line(img, x_pt1, x_pt2, (0, 0, 255), 1)
 
+    return img
+
+
+def drawTriangle(img, dest_point, color=(255, 255, 255), line_thiccness=2):
+    dest_point_x = dest_point[0]
+    dest_point_y = dest_point[1]
+
+    a_pt1 = [val.CENTER_IMAGE[0], dest_point_y]
+    a_pt2 = [dest_point_x, dest_point_y]
+
+    b_pt1 = [val.CENTER_IMAGE[0], val.CENTER_IMAGE[1]]
+    b_pt2 = [val.CENTER_IMAGE[0], dest_point_y]
+
+    c_pt1 = [val.CENTER_IMAGE[0], val.CENTER_IMAGE[1]]
+    c_pt2 = [dest_point_x, dest_point_y]
+
+    y1 = val.CENTER_IMAGE[1]
+    cv2.line(img, c_pt1, c_pt2, color, line_thiccness)
     return img
 
 

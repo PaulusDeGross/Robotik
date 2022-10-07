@@ -19,6 +19,30 @@ def getMiddle(frame):
     return [math.floor(x + w / 2), math.floor(y + h / 2), w, h]
 
 
+def getAngleTan(frame):
+    """
+    Gets the Angle of the yellow goal using a tangent using tan^-1(m)
+
+    :param frame:
+    :return:
+    """
+    x, y, w, h = getMiddle(frame)
+    x = x - val.CENTER_IMAGE[0]
+    y = val.CENTER_IMAGE[1] - y
+    print(f"{x}, {y}")
+
+    if x > 0 and y < 0:
+        return math.degrees(np.arctan(y / x) + math.pi * 2)
+    elif x < 0 and y < 0:
+        print(f"{x}, {y}")
+        return math.degrees(np.arctan(y / x) + math.pi)
+    elif x > 0 and y > 0:
+        return math.degrees(np.arctan(y / x))
+
+
+
+
+
 def getAngle(frame):
     """
     Gets the Angle of the Blue Goal using the unwrapped image

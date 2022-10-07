@@ -9,8 +9,8 @@ def getMiddle(frame):
     """
     Gets the middle of the Ball using a mask
 
-    :param frame:
-    :return: middle of the ball in x, y coords
+    :param frame: Image to be evaluated
+    :return: floored x, y value representing the center of the ball
     """
     lower = np.array(val.BALL_COLOR[0])  # BALL_COLOR[0] consists of 3 Values: Blue Min, Green Min, Red Min
     upper = np.array(val.BALL_COLOR[1])  # BALL_COLOR[1] consists of 3 Values: Blue Max, Green Max, Red Max

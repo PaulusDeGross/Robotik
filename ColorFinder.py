@@ -4,7 +4,7 @@ import Utility as ut
 import Values as val
 
 VALS = val.GOAL_B_COLOR
-PATH = "img/264.png"
+PATH = "img/109.png"
 
 
 def empty(i):
